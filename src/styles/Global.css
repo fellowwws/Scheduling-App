@@ -1,0 +1,47 @@
+html, body {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+#root { height: 100%; }
+
+a {
+  text-decoration: none !important;
+}
+
+.MuiFormControl-root {
+  width: 100%;
+}
+.MuiInputBase-root {
+  height: 48px !important;
+  padding: .5rem .25rem !important;
+  font-size: 1.25rem !important;
+  font-weight: 400 !important;
+  line-height: 1.5 !important;
+  border-radius: .3rem !important;
+  color: #495057 !important;
+  background-color: #fff !important;
+  background-clip: padding-box !important;
+  border: #ced4da !important;
+  font-family: "Segoe UI","Roboto","Helvetica Neue","Arial","Noto Sans","sans-serif","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji" !important;
+}
+
+.Mui-focused{
+  color: #495057 !important;
+  background-color: #fff !important;
+  border-color: #80bdff !important;
+  outline: 0 !important;
+  box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25) !important;
+}
+.MuiOutlinedInput-notchedOutline {
+  border-color: #ced4da !important;
+}
+.MuiOutlinedInput-root:hover 
+.MuiOutlinedInput-notchedOutline {
+  border-color: #ced4da !important;
+}
+.MuiOutlinedInput-root.Mui-focused 
+.MuiOutlinedInput-notchedOutline {
+  border: 1px solid !important;
+  border-color: #80bdff !important;
+ }
