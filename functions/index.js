@@ -31,7 +31,7 @@ function checkCredentials(context) {
 function sendWelcomeEmail(user) {
   const message = {
     to: user.email,
-    from: 'noreply@rota-app.web.app',
+    from: 'noreply@rota-app-65e11.firebaseapp.com',
     templateId: 'd-40e2bb2753114d949ac74ace024cd939',
     dynamic_template_data: {
       name: user.name,
@@ -49,7 +49,7 @@ function sendRotaPublishedEmail(rota) {
       listUsersResult.users.forEach(({email, displayName}) => {
         const message = {
           to: email,
-          from: 'noreply@rota-app.web.app',
+          from: 'noreply@rota-app-65e11.firebaseapp.com',
           templateId: 'd-8864eefae9304497a8080251a2c6f630',
           dynamic_template_data: {
             name: displayName ? displayName.split(" ")[0] : 'User',
@@ -71,7 +71,7 @@ function sendRotaUpdatedEmail(rota) {
       listUsersResult.users.forEach(({email, displayName}) => {
         const message = {
           to: email,
-          from: 'noreply@rota-app.web.app',
+          from: 'noreply@rota-app-65e11.firebaseapp.com',
           templateId: 'd-00674b99a887424c9ee93623451da9ab',
           dynamic_template_data: {
             name: displayName ? displayName.split(" ")[0] : 'User',
@@ -95,7 +95,7 @@ exports.sendPasswordChangedEmail = functions
   
   const message = {
     to: data.email,
-    from: 'noreply@rota-app.web.app',
+    from: 'noreply@rota-app-65e11.firebaseapp.com',
     templateId: 'd-d3633f6c8f9c4da1b06ed60587df3e6d',
     dynamic_template_data: {
       name: data.displayName ? data.displayName.split(" ")[0] : 'User'

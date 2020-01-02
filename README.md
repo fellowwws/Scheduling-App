@@ -20,8 +20,8 @@ This app uses:
 
 Create new employee | Update/delete employee
 ------------ | -------------
-![](github-gifs/add-employee.gif) | ![](github-gifs/edit-delete-employee.gif)
+![](README-gifs/add-employee.gif) | ![](README-gifs/edit-delete-employee.gif)
 
 Create new rota | Update/delete rota
 ------------ | -------------
-![](github-gifs/create-rota.gif) | ![](github-gifs/update-delete-rota.gif)
+![](README-gifs/create-rota.gif) | ![](README-gifs/update-delete-rota.gif)
