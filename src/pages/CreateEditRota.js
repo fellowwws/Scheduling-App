@@ -36,7 +36,7 @@ function CreateEditRota({ location }) {
       name: {...employee.name},
       schedule: Array(7).fill("")
     }
-  });
+    });
 
   return (
     <Container fluid className="pb-1">
