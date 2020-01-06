@@ -1,10 +1,5 @@
-import React from 'react';
-import { 
-  Container,
-  Navbar,
-  Nav,
-  NavItem,
-} from 'reactstrap';
+import React from 'react'
+import { Container, Navbar, Nav, NavItem } from 'reactstrap'
 
 function Footer() {
   return (
@@ -20,8 +15,8 @@ function Footer() {
           </NavItem>
         </Nav>
       </Container>
-  </Navbar>
-  );
-};
+    </Navbar>
+  )
+}
 
-export default Footer;
+export default Footer

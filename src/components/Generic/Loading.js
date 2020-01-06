@@ -1,44 +1,40 @@
-import React, { 
-  useState,
-  useEffect,
-  useRef
-} from 'react';
+import React, { useState, useEffect, useRef } from 'react'
 
-const initState = 'Loading'.split(''); //['L','o','a','d','i','n','g']
+const initState = 'Loading'.split('') //['L','o','a','d','i','n','g']
 
 function Loading() {
-  const [message, setMessage] = useState(initState);
+  const [message, setMessage] = useState(initState)
 
   useInterval(() => {
-    setMessage([...message, '.']); //['L','o','a','d','i','n','g','.','.','.']
+    setMessage([...message, '.']) //['L','o','a','d','i','n','g','.','.','.']
   }, 300)
 
   useEffect(() => {
-    if (message.length > 10) setMessage(initState);
+    if (message.length > 10) setMessage(initState)
   }, [message])
 
   return (
     <p className="text-center text-muted">
       <small>{message.join('')}</small>
     </p>
-  );
+  )
 }
 
 function useInterval(callback, interval) {
-  const savedCallback = useRef();
+  const savedCallback = useRef()
 
   useEffect(() => {
-    savedCallback.current = callback;
-  });
+    savedCallback.current = callback
+  })
 
   useEffect(() => {
     function tick() {
-      savedCallback.current();
+      savedCallback.current()
     }
 
-    let id = setInterval(tick, interval);
-    return () => clearInterval(id);
-  }, []);
+    let id = setInterval(tick, interval)
+    return () => clearInterval(id)
+  }, [])
 }
 
-export default Loading;
+export default Loading

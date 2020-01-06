@@ -1,41 +1,36 @@
-import React from 'react';
-import { Table } from 'reactstrap';
+import React from 'react'
+import { Table } from 'reactstrap'
 
 const styles = {
   table: {
     td: {
       verticalAlign: 'middle',
       textAlign: 'center',
-      minWidth: '75px'
-    }
-  }
+      minWidth: '75px',
+    },
+  },
 }
 
-function Rota({rota, shiftTypes}) {
-  const showEvents = rota.events.some(e => e !== ""); // true || false
+function Rota({ rota, shiftTypes }) {
+  const showEvents = rota.events.some(e => e !== '') // true || false
 
   return (
-    <Table
-      bordered striped responsive
-      className="rota">
+    <Table bordered striped responsive className="rota">
       <thead>
-        <DaysOfTheWeek/>
-        {showEvents && <Events events={rota.events}/>}
+        <DaysOfTheWeek />
+        {showEvents && <Events events={rota.events} />}
       </thead>
       <tbody>
-      {Object.keys(rota.body).map((key, i) => (
-        <Schedule 
-          key={i}
-          employee={rota.body[key]} 
-        />
-      ))}
+        {Object.keys(rota.body).map((key, i) => (
+          <Schedule key={i} employee={rota.body[key]} />
+        ))}
       </tbody>
     </Table>
-  );
+  )
 }
 
 function DaysOfTheWeek() {
-  const style = 'bg-dark text-white text-center';
+  const style = 'bg-dark text-white text-center'
   return (
     <tr>
       <th className="border-0"></th>
@@ -53,25 +48,29 @@ function DaysOfTheWeek() {
 const Events = ({ events }) => (
   <tr>
     <th className="bg-light"></th>
-    {events.map((event, i) => 
-      <th key={i} className="text-center">{event}</th>
-    )}
+    {events.map((event, i) => (
+      <th key={i} className="text-center">
+        {event}
+      </th>
+    ))}
   </tr>
-);
+)
 
-const Schedule = ({employee, shiftTypes}) => {
-  const { name } = employee;
+const Schedule = ({ employee, shiftTypes }) => {
+  const { name } = employee
   return (
     <tr>
       <td>
         {`${name.first}
           ${name.last.toUpperCase()}`}
       </td>
-      {employee.schedule.map(
-        (shift, i) => <td key={i} style={styles.table.td}>{shift}</td>
-      )}
+      {employee.schedule.map((shift, i) => (
+        <td key={i} style={styles.table.td}>
+          {shift}
+        </td>
+      ))}
     </tr>
-  );
+  )
 }
 
 // function Shift({shift, shiftTypes}) {
@@ -82,7 +81,7 @@ const Schedule = ({employee, shiftTypes}) => {
 //   if( type ) {
 //     type = shiftTypes.find(s => s.code === type);
 //     return (
-//       <td 
+//       <td
 //         style={{background: type.color}}
 //         className="text-center">{time}
 //       </td>
@@ -91,4 +90,4 @@ const Schedule = ({employee, shiftTypes}) => {
 //   return <td className="text-center">{time}</td>
 // }
 
-export default Rota;
+export default Rota
