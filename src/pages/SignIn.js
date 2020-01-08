@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Container, Row, Col } from 'reactstrap'
 import SignInForm from '../components/SignInForm'
+import Footer from '../components/Generic/Footer'
 
 function SignIn() {
   return (
@@ -20,6 +21,7 @@ function SignIn() {
         </Col>
         <Col md="3"></Col>
       </Row>
+      <Footer />
     </Container>
   )
 }

@@ -14,23 +14,19 @@ function Dashboard() {
   if (!published || !unpublished) return null
 
   return (
-    <Fragment>
-      <Container>
-        <h2 className="py-2">Dashboard</h2>
+    <Container>
+      <h2 className="py-2">Dashboard</h2>
 
-        <h3>{user.admin ? 'Published' : 'Rotas'}</h3>
-        <RotaTable rotas={published} />
+      <h3>{user.admin ? 'Published' : 'Rotas'}</h3>
+      <RotaTable rotas={published} />
 
-        {user.admin && (
-          <Fragment>
-            <h3>Unpublished</h3>
-            <RotaTable rotas={unpublished} />
-          </Fragment>
-        )}
-      </Container>
-
-      <Footer />
-    </Fragment>
+      {user.admin && (
+        <Fragment>
+          <h3>Unpublished</h3>
+          <RotaTable rotas={unpublished} />
+        </Fragment>
+      )}
+    </Container>
   )
 }
 
