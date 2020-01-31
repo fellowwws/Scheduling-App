@@ -3,46 +3,46 @@ import React, {
   useState,
   useEffect,
   useContext,
-  useRef,
-} from 'react'
-import { firestore } from '../../firebase'
-import { AuthContext } from '../authProvider'
+  useRef
+} from "react";
+import { firestore } from "../../firebase";
+import { AuthContext } from "../authProvider";
 
-export const UnpublishedContext = createContext()
+export const UnpublishedContext = createContext();
 
 function UnpublishedProvider(props) {
-  const { user } = useContext(AuthContext)
-  const componentDidMount = useRef(false)
-  const [rotas, setRotas] = useState(null)
-  const [rotasLoading, setRotasLoading] = useState(true)
+  const { user } = useContext(AuthContext);
+  const componentDidMount = useRef(false);
+  const [rotas, setRotas] = useState(null);
+  const [rotasLoading, setRotasLoading] = useState(true);
 
   useEffect(() => {
     if (componentDidMount.current) {
-      return firestore.collection('unpublished').onSnapshot(snapshot => {
+      return firestore.collection("unpublished").onSnapshot(snapshot => {
         const rotas = snapshot.docs.map(doc => {
-          const data = doc.data()
-          const rota = { id: doc.id, ...data }
-          rota.date = data.date.toDate()
-          return rota
-        })
-        setRotas(rotas)
-        setRotasLoading(false)
-      })
+          const data = doc.data();
+          const rota = { id: doc.id, ...data };
+          rota.date = data.date.toDate();
+          return rota;
+        });
+        setRotas(rotas);
+        setRotasLoading(false);
+      });
     }
-    componentDidMount.current = true
-  }, [user])
+    componentDidMount.current = true;
+  }, [user]);
 
   const values = {
     rotas,
     rotasLoading,
-    setRotasLoading,
-  }
+    setRotasLoading
+  };
 
   return (
     <UnpublishedContext.Provider value={values}>
       {props.children}
     </UnpublishedContext.Provider>
-  )
+  );
 }
 
-export default UnpublishedProvider
+export default UnpublishedProvider;

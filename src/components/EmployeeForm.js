@@ -3,9 +3,9 @@ import React, {
   useState,
   useEffect,
   useReducer,
-  useContext,
-} from 'react'
-import { withRouter } from 'react-router'
+  useContext
+} from "react";
+import { withRouter } from "react-router";
 import {
   Form,
   Button,
@@ -15,135 +15,135 @@ import {
   Label,
   FormFeedback,
   Alert,
-  Spinner,
-} from 'reactstrap'
-import { emailAlreadyExists } from '../errors'
-import { StaffContext } from '../providers/staffProvider'
-import { functions } from '../firebase'
+  Spinner
+} from "reactstrap";
+import { emailAlreadyExists } from "../errors";
+import { StaffContext } from "../providers/staffProvider";
+import { functions } from "../firebase";
 
-const createUser = functions.httpsCallable('createUser')
-const updateUser = functions.httpsCallable('updateUserRecord')
+const createUser = functions.httpsCallable("createUser");
+const updateUser = functions.httpsCallable("updateUserRecord");
 
 const initState = {
   name: {
-    first: '',
-    last: '',
+    first: "",
+    last: ""
   },
-  email: '',
-}
+  email: ""
+};
 const initErrorState = {
   name: { first: false, last: false },
-  email: false,
-}
+  email: false
+};
 
 function reducer(state, action) {
   switch (action.type) {
-    case 'FIRST_NAME':
-      return { ...state, name: { ...state.name, first: action.payload } }
-    case 'LAST_NAME':
-      return { ...state, name: { ...state.name, last: action.payload } }
-    case 'EMAIL':
-      return { ...state, email: action.payload }
-    case 'RESET':
-      return { ...initState }
+    case "FIRST_NAME":
+      return { ...state, name: { ...state.name, first: action.payload } };
+    case "LAST_NAME":
+      return { ...state, name: { ...state.name, last: action.payload } };
+    case "EMAIL":
+      return { ...state, email: action.payload };
+    case "RESET":
+      return { ...initState };
     default:
-      return state
+      return state;
   }
 }
 
 function EmployeeForm({ employee, history }) {
-  const { staffLoading, setStaffLoading } = useContext(StaffContext)
-  const [state, dispatch] = useReducer(reducer, initState)
-  const [errors, setErrors] = useState(initErrorState)
-  const [showErrors, setShowErrors] = useState(false)
-  const [showAuthErrors, setShowAuthErrors] = useState(false)
+  const { staffLoading, setStaffLoading } = useContext(StaffContext);
+  const [state, dispatch] = useReducer(reducer, initState);
+  const [errors, setErrors] = useState(initErrorState);
+  const [showErrors, setShowErrors] = useState(false);
+  const [showAuthErrors, setShowAuthErrors] = useState(false);
 
   useEffect(() => {
     if (!employee) {
-      dispatch({ type: 'RESET' })
+      dispatch({ type: "RESET" });
     } else {
-      dispatch({ type: 'FIRST_NAME', payload: employee.name.first })
-      dispatch({ type: 'LAST_NAME', payload: employee.name.last })
-      dispatch({ type: 'EMAIL', payload: employee.email })
+      dispatch({ type: "FIRST_NAME", payload: employee.name.first });
+      dispatch({ type: "LAST_NAME", payload: employee.name.last });
+      dispatch({ type: "EMAIL", payload: employee.email });
     }
-  }, [employee])
+  }, [employee]);
 
   useEffect(() => {
     setErrors(errors => ({
       ...errors,
       name: {
         ...errors.name,
-        first: state.name.first.length > 0 ? false : true,
-      },
-    }))
+        first: state.name.first.length > 0 ? false : true
+      }
+    }));
     setErrors(errors => ({
       ...errors,
-      name: { ...errors.name, last: state.name.last.length > 0 ? false : true },
-    }))
+      name: { ...errors.name, last: state.name.last.length > 0 ? false : true }
+    }));
     setErrors(errors => ({
       ...errors,
-      email: state.email.length > 0 ? false : true,
-    }))
-  }, [state])
+      email: state.email.length > 0 ? false : true
+    }));
+  }, [state]);
 
   const isValid = () => {
     return (
       errors.name.first !== true &&
       errors.name.last !== true &&
       errors.email !== true
-    )
-  }
+    );
+  };
 
   const handleCreateUser = e => {
-    e.preventDefault()
-    if (!showErrors) setShowErrors(true)
+    e.preventDefault();
+    if (!showErrors) setShowErrors(true);
 
     if (isValid()) {
       createUser({
         name: {
           first: state.name.first,
-          last: state.name.last,
+          last: state.name.last
         },
-        email: state.email,
+        email: state.email
       }).catch(() => {
-        setShowAuthErrors(true)
+        setShowAuthErrors(true);
         setErrors(errors => ({
           ...errors,
           auth: {
-            ...emailAlreadyExists,
-          },
-        }))
-        setStaffLoading(false)
-      })
+            ...emailAlreadyExists
+          }
+        }));
+        setStaffLoading(false);
+      });
 
-      setShowErrors(false)
-      setShowAuthErrors(false)
-      dispatch({ type: 'RESET' })
-      setStaffLoading(true)
+      setShowErrors(false);
+      setShowAuthErrors(false);
+      dispatch({ type: "RESET" });
+      setStaffLoading(true);
     }
-  }
+  };
 
   const handleUpdateUser = e => {
-    e.preventDefault()
-    if (!showErrors) setShowErrors(true)
+    e.preventDefault();
+    if (!showErrors) setShowErrors(true);
 
     if (isValid()) {
       updateUser({
         uid: employee.uid,
         name: {
           first: state.name.first,
-          last: state.name.last,
-        },
+          last: state.name.last
+        }
       })
-        .then(() => console.log('User updated'))
-        .catch(error => console.log(error))
+        .then(() => console.log("User updated"))
+        .catch(error => console.log(error));
 
-      setShowErrors(false)
-      dispatch({ type: 'RESET' })
-      setStaffLoading(true)
-      history.push('/staff')
+      setShowErrors(false);
+      dispatch({ type: "RESET" });
+      setStaffLoading(true);
+      history.push("/staff");
     }
-  }
+  };
 
   return (
     <Fragment>
@@ -169,7 +169,7 @@ function EmployeeForm({ employee, history }) {
               placeholder="First Name"
               value={state.name.first}
               onChange={e =>
-                dispatch({ type: 'FIRST_NAME', payload: e.target.value.trim() })
+                dispatch({ type: "FIRST_NAME", payload: e.target.value.trim() })
               }
               invalid={showErrors && errors.name.first}
               disabled={staffLoading}
@@ -191,7 +191,7 @@ function EmployeeForm({ employee, history }) {
               placeholder="Last Name"
               value={state.name.last}
               onChange={e =>
-                dispatch({ type: 'LAST_NAME', payload: e.target.value.trim() })
+                dispatch({ type: "LAST_NAME", payload: e.target.value.trim() })
               }
               invalid={showErrors && errors.name.last}
               disabled={staffLoading}
@@ -213,7 +213,7 @@ function EmployeeForm({ employee, history }) {
               placeholder="Email"
               value={state.email}
               onChange={e =>
-                dispatch({ type: 'EMAIL', payload: e.target.value.trim() })
+                dispatch({ type: "EMAIL", payload: e.target.value.trim() })
               }
               invalid={showErrors && errors.email}
               disabled={employee || staffLoading}
@@ -234,16 +234,16 @@ function EmployeeForm({ employee, history }) {
               {staffLoading ? (
                 <Spinner color="light" />
               ) : employee ? (
-                'Update Employee'
+                "Update Employee"
               ) : (
-                'Add Employee'
+                "Add Employee"
               )}
             </Button>
           </Col>
         </Row>
       </Form>
     </Fragment>
-  )
+  );
 }
 
-export default withRouter(EmployeeForm)
+export default withRouter(EmployeeForm);

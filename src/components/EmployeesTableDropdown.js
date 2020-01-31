@@ -1,36 +1,36 @@
-import React, { useState, useContext, Fragment } from 'react'
+import React, { useState, useContext, Fragment } from "react";
 import {
   Dropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem,
-} from 'reactstrap'
-import { withRouter } from 'react-router'
-import { functions } from '../firebase'
-import { AuthContext } from '../providers/authProvider'
-import { StaffContext } from '../providers/staffProvider'
+  DropdownItem
+} from "reactstrap";
+import { withRouter } from "react-router";
+import { functions } from "../firebase";
+import { AuthContext } from "../providers/authProvider";
+import { StaffContext } from "../providers/staffProvider";
 
-const deleteUser = functions.httpsCallable('deleteUserRecord')
+const deleteUser = functions.httpsCallable("deleteUserRecord");
 
 function _Dropdown({ employee, history }) {
-  const { user } = useContext(AuthContext)
-  const { setStaffLoading } = useContext(StaffContext)
-  const [dropdownOpen, setDropdownOpen] = useState(false)
-  const toggle = () => setDropdownOpen(!dropdownOpen)
+  const { user } = useContext(AuthContext);
+  const { setStaffLoading } = useContext(StaffContext);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const toggle = () => setDropdownOpen(!dropdownOpen);
 
   const handleEdit = () => {
-    history.push(`/staff/${employee.uid}`)
-  }
+    history.push(`/staff/${employee.uid}`);
+  };
 
   const handleDelete = () => {
-    if (window.confirm('Are you sure?')) {
+    if (window.confirm("Are you sure?")) {
       deleteUser(employee)
-        .then(() => console.log('User deleted'))
-        .catch(error => console.log(error))
-      setStaffLoading(true)
-      history.push('/staff')
+        .then(() => console.log("User deleted"))
+        .catch(error => console.log(error));
+      setStaffLoading(true);
+      history.push("/staff");
     }
-  }
+  };
 
   return (
     <Dropdown className="float-right" isOpen={dropdownOpen} toggle={toggle}>
@@ -45,7 +45,7 @@ function _Dropdown({ employee, history }) {
         )}
       </DropdownMenu>
     </Dropdown>
-  )
+  );
 }
 
-export default withRouter(_Dropdown)
+export default withRouter(_Dropdown);

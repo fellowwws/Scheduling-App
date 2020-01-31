@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext } from "react";
 import {
   Button,
   Form,
@@ -7,78 +7,78 @@ import {
   Label,
   Input,
   Alert,
-  Spinner,
-} from 'reactstrap'
-import { AuthContext } from '../providers/authProvider'
-import { incorrectUsernameOrPassword } from '../errors'
+  Spinner
+} from "reactstrap";
+import { AuthContext } from "../providers/authProvider";
+import { incorrectUsernameOrPassword } from "../errors";
 
 function SignIn() {
-  const { auth } = useContext(AuthContext)
+  const { auth } = useContext(AuthContext);
 
   const [values, setValues] = useState({
-    email: '',
-    password: '',
-  })
+    email: "",
+    password: ""
+  });
   const [errors, setErrors] = useState({
     email: false,
-    password: false,
-  })
-  const [showErrors, setShowErrors] = useState(false)
-  const [submitting, setSubmitting] = useState(false)
+    password: false
+  });
+  const [showErrors, setShowErrors] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
     setErrors(errors => ({
       ...errors,
-      email: values.email.length > 0 ? false : true,
-    }))
+      email: values.email.length > 0 ? false : true
+    }));
     setErrors(errors => ({
       ...errors,
-      password: values.password.length > 0 ? false : true,
-    }))
-  }, [values])
+      password: values.password.length > 0 ? false : true
+    }));
+  }, [values]);
 
   const handleChange = e => {
-    const { name, value } = e.target
-    setValues(values => ({ ...values, [name]: value.trim() }))
-  }
+    const { name, value } = e.target;
+    setValues(values => ({ ...values, [name]: value.trim() }));
+  };
 
   const isValid = () => {
-    return !errors.email && !errors.password
-  }
+    return !errors.email && !errors.password;
+  };
 
   const handleSubmit = e => {
-    e.preventDefault()
-    if (!showErrors) setShowErrors(true)
+    e.preventDefault();
+    if (!showErrors) setShowErrors(true);
 
     if (isValid()) {
-      setSubmitting(true)
+      setSubmitting(true);
 
       auth
         .signInWithEmailAndPassword(values.email, values.password)
         .catch(error => {
           switch (error.code) {
-            case 'auth/user-not-found':
-            case 'auth/wrong-password':
+            case "auth/user-not-found":
+            case "auth/wrong-password":
               setErrors(errors => ({
                 ...errors,
                 auth: {
-                  ...incorrectUsernameOrPassword,
-                },
-              }))
-              break
+                  ...incorrectUsernameOrPassword
+                }
+              }));
+              break;
             default:
               setErrors(errors => ({
                 ...errors,
                 auth: {
-                  code: 'Error',
-                  message: 'Something went wrong. Please try again',
-                },
-              }))
+                  code: "Error",
+                  message: "Something went wrong. Please try again"
+                }
+              }));
           }
-          setSubmitting(false)
-        })
+          setSubmitting(false);
+        });
     }
-  }
+  };
   return (
     <Form onSubmit={handleSubmit}>
       {errors.auth && (
@@ -119,10 +119,10 @@ function SignIn() {
       </FormGroup>
 
       <Button disabled={submitting} color="primary" size="lg" block>
-        {submitting ? <Spinner color="light" /> : 'Sign In'}
+        {submitting ? <Spinner color="light" /> : "Sign In"}
       </Button>
     </Form>
-  )
+  );
 }
 
-export default SignIn
+export default SignIn;

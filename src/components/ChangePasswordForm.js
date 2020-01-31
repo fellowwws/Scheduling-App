@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useReducer, Fragment } from 'react'
-import { auth, functions } from '../firebase'
+import React, { useState, useEffect, useReducer, Fragment } from "react";
+import { auth, functions } from "../firebase";
 import {
   Button,
   Alert,
@@ -8,78 +8,78 @@ import {
   FormFeedback,
   Label,
   Input,
-  Spinner,
-} from 'reactstrap'
+  Spinner
+} from "reactstrap";
 
 const sendPasswordChangedEmail = functions.httpsCallable(
-  'sendPasswordChangedEmail'
-)
+  "sendPasswordChangedEmail"
+);
 
 const initState = {
-  password: '',
-  confirmPassword: '',
-}
+  password: "",
+  confirmPassword: ""
+};
 const initErrorState = {
   password: true,
-  confirmPassword: false,
-}
+  confirmPassword: false
+};
 
 function reducer(state, action) {
   switch (action.type) {
-    case 'PASSWORD':
-      return { ...state, password: action.payload }
-    case 'CONFIRM_PASSWORD':
-      return { ...state, confirmPassword: action.payload }
-    case 'RESET':
-      return { ...initState }
+    case "PASSWORD":
+      return { ...state, password: action.payload };
+    case "CONFIRM_PASSWORD":
+      return { ...state, confirmPassword: action.payload };
+    case "RESET":
+      return { ...initState };
     default:
-      return state
+      return state;
   }
 }
 
 function ChangePasswordForm() {
-  const [user] = useState(auth.currentUser)
-  const [state, dispatch] = useReducer(reducer, initState)
-  const [errors, setErrors] = useState({ ...initErrorState })
-  const [showErrors, setShowErrors] = useState(false)
-  const [submitting, setSubmitting] = useState(false)
+  const [user] = useState(auth.currentUser);
+  const [state, dispatch] = useReducer(reducer, initState);
+  const [errors, setErrors] = useState({ ...initErrorState });
+  const [showErrors, setShowErrors] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   useEffect(
     () =>
       setErrors({
         ...errors,
         password: !!(state.password.length < 6),
-        confirmPassword: !!(state.password !== state.confirmPassword),
+        confirmPassword: !!(state.password !== state.confirmPassword)
       }),
     [state.password, state.confirmPassword]
-  )
+  );
 
-  const isValid = () => !errors.password && !errors.confirmPassword
+  const isValid = () => !errors.password && !errors.confirmPassword;
 
   const handleSubmit = e => {
-    e.preventDefault()
-    setShowErrors(true)
+    e.preventDefault();
+    setShowErrors(true);
 
-    if (!isValid()) return
-    setSubmitting(true)
+    if (!isValid()) return;
+    setSubmitting(true);
 
     user
       .updatePassword(state.password)
       .then(() => {
         sendPasswordChangedEmail({
           displayName: user.displayName,
-          email: user.email,
-        }).then(() => auth.signOut())
+          email: user.email
+        }).then(() => auth.signOut());
       })
       .catch(error => {
-        setSubmitting(false)
-        setErrors({ ...initErrorState, auth: { ...error } })
-        console.log('Error updating password', error)
-      })
+        setSubmitting(false);
+        setErrors({ ...initErrorState, auth: { ...error } });
+        console.log("Error updating password", error);
+      });
 
-    setShowErrors(false)
-    dispatch({ type: 'RESET' })
-  }
+    setShowErrors(false);
+    dispatch({ type: "RESET" });
+  };
   return (
     <Fragment>
       {errors.auth && (
@@ -102,8 +102,8 @@ function ChangePasswordForm() {
             invalid={showErrors && errors.password}
             onChange={e =>
               dispatch({
-                type: 'PASSWORD',
-                payload: e.target.value.trim(),
+                type: "PASSWORD",
+                payload: e.target.value.trim()
               })
             }
           />
@@ -123,8 +123,8 @@ function ChangePasswordForm() {
             invalid={showErrors && errors.confirmPassword}
             onChange={e =>
               dispatch({
-                type: 'CONFIRM_PASSWORD',
-                payload: e.target.value.trim(),
+                type: "CONFIRM_PASSWORD",
+                payload: e.target.value.trim()
               })
             }
           />
@@ -135,12 +135,12 @@ function ChangePasswordForm() {
 
         <FormGroup>
           <Button color="primary" size="lg" disabled={submitting} block>
-            {submitting ? <Spinner color="light" /> : 'Submit'}
+            {submitting ? <Spinner color="light" /> : "Submit"}
           </Button>
         </FormGroup>
       </Form>
     </Fragment>
-  )
+  );
 }
 
-export default ChangePasswordForm
+export default ChangePasswordForm;

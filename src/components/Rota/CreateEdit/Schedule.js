@@ -1,26 +1,26 @@
-import React from 'react'
-import { Input } from 'reactstrap'
+import React from "react";
+import { Input } from "reactstrap";
 
 const styles = {
   td: {
-    padding: '2px',
+    padding: "2px"
   },
   input: {
-    textAlign: 'center',
-    minWidth: '75px',
-    height: '75px',
-    padding: '2px',
-    border: 'none',
-    borderRadius: '0',
-    transform: 'translate3d(0, 0, 0)', //https://stackoverflow.com/questions/36697835/ios-safari-input-text-disappearing
+    textAlign: "center",
+    minWidth: "75px",
+    height: "75px",
+    padding: "2px",
+    border: "none",
+    borderRadius: "0",
+    transform: "translate3d(0, 0, 0)" //https://stackoverflow.com/questions/36697835/ios-safari-input-text-disappearing
   },
   employeeName: {
-    verticalAlign: 'middle',
-  },
-}
+    verticalAlign: "middle"
+  }
+};
 
 function Schedule({ employee, handleChange }) {
-  const [MON, TUE, WED, THU, FRI, SAT, SUN] = employee.schedule
+  const [MON, TUE, WED, THU, FRI, SAT, SUN] = employee.schedule;
 
   return (
     <tr>
@@ -105,7 +105,7 @@ function Schedule({ employee, handleChange }) {
         />
       </td>
     </tr>
-  )
+  );
 }
 
-export default Schedule
+export default Schedule;

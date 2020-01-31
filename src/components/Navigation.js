@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useContext } from 'react'
+import React, { Fragment, useState, useContext } from "react";
 import {
   Collapse,
   Navbar,
@@ -8,14 +8,14 @@ import {
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem,
-} from 'reactstrap'
-import { Link } from 'react-router-dom'
-import { AuthContext } from '../providers/authProvider'
+  DropdownItem
+} from "reactstrap";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../providers/authProvider";
 
 function Navigation() {
-  const { user, auth } = useContext(AuthContext)
-  const [isOpen, setIsOpen] = useState(false)
+  const { user, auth } = useContext(AuthContext);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <Fragment>
@@ -37,7 +37,7 @@ function Navigation() {
         </Collapse>
       </Navbar>
     </Fragment>
-  )
+  );
 }
 
 const NavLinks = () => (
@@ -53,14 +53,14 @@ const NavLinks = () => (
       </Link>
     </NavItem>
   </Fragment>
-)
+);
 
 const Menu = ({ user, signOut }) => {
   const handleSignOut = () => {
-    if (window.confirm('Are you sure?')) {
-      signOut()
+    if (window.confirm("Are you sure?")) {
+      signOut();
     }
-  }
+  };
 
   return (
     <UncontrolledDropdown nav inNavbar>
@@ -79,7 +79,7 @@ const Menu = ({ user, signOut }) => {
         </DropdownItem>
       </DropdownMenu>
     </UncontrolledDropdown>
-  )
-}
+  );
+};
 
-export default Navigation
+export default Navigation;

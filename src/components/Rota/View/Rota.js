@@ -1,18 +1,18 @@
-import React from 'react'
-import { Table } from 'reactstrap'
+import React from "react";
+import { Table } from "reactstrap";
 
 const styles = {
   table: {
     td: {
-      verticalAlign: 'middle',
-      textAlign: 'center',
-      minWidth: '75px',
-    },
-  },
-}
+      verticalAlign: "middle",
+      textAlign: "center",
+      minWidth: "75px"
+    }
+  }
+};
 
 function Rota({ rota, shiftTypes }) {
-  const showEvents = rota.events.some(e => e !== '') // true || false
+  const showEvents = rota.events.some(e => e !== ""); // true || false
 
   return (
     <Table bordered striped responsive className="rota">
@@ -26,11 +26,11 @@ function Rota({ rota, shiftTypes }) {
         ))}
       </tbody>
     </Table>
-  )
+  );
 }
 
 function DaysOfTheWeek() {
-  const style = 'bg-dark text-white text-center'
+  const style = "bg-dark text-white text-center";
   return (
     <tr>
       <th className="border-0"></th>
@@ -42,7 +42,7 @@ function DaysOfTheWeek() {
       <th className={style}>SAT</th>
       <th className={style}>SUN</th>
     </tr>
-  )
+  );
 }
 
 const Events = ({ events }) => (
@@ -54,10 +54,10 @@ const Events = ({ events }) => (
       </th>
     ))}
   </tr>
-)
+);
 
 const Schedule = ({ employee, shiftTypes }) => {
-  const { name } = employee
+  const { name } = employee;
   return (
     <tr>
       <td>
@@ -70,8 +70,8 @@ const Schedule = ({ employee, shiftTypes }) => {
         </td>
       ))}
     </tr>
-  )
-}
+  );
+};
 
 // function Shift({shift, shiftTypes}) {
 //   if( !shift ) {
@@ -90,4 +90,4 @@ const Schedule = ({ employee, shiftTypes }) => {
 //   return <td className="text-center">{time}</td>
 // }
 
-export default Rota
+export default Rota;

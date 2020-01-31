@@ -1,20 +1,20 @@
-import React from 'react'
-import { Input } from 'reactstrap'
+import React from "react";
+import { Input } from "reactstrap";
 
 const styles = {
   th: {
-    padding: '2px',
+    padding: "2px"
   },
   input: {
-    textAlign: 'center',
-    height: '75px',
-    border: 'none',
-    borderRadius: '0',
-  },
-}
+    textAlign: "center",
+    height: "75px",
+    border: "none",
+    borderRadius: "0"
+  }
+};
 
 function Events({ events, handleChange }) {
-  const [MON, TUE, WED, THU, FRI, SAT, SUN] = events
+  const [MON, TUE, WED, THU, FRI, SAT, SUN] = events;
   return (
     <tr>
       <th className="bg-light"></th>
@@ -96,7 +96,7 @@ function Events({ events, handleChange }) {
         />
       </th>
     </tr>
-  )
+  );
 }
 
-export default Events
+export default Events;

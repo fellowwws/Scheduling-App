@@ -1,8 +1,8 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { Container, Row, Col } from 'reactstrap'
-import SignInForm from '../components/SignInForm'
-import Footer from '../components/Generic/Footer'
+import React from "react";
+import { Link } from "react-router-dom";
+import { Container, Row, Col } from "reactstrap";
+import SignInForm from "../components/SignInForm";
+import Footer from "../components/Generic/Footer";
 
 function SignIn() {
   return (
@@ -23,7 +23,7 @@ function SignIn() {
       </Row>
       <Footer />
     </Container>
-  )
+  );
 }
 
-export default SignIn
+export default SignIn;

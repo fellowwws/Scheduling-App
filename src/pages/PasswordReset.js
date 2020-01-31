@@ -1,6 +1,6 @@
-import React from 'react'
-import { Container, Row, Col } from 'reactstrap'
-import PasswordResetForm from '../components/PasswordResetForm'
+import React from "react";
+import { Container, Row, Col } from "reactstrap";
+import PasswordResetForm from "../components/PasswordResetForm";
 
 function PasswordReset() {
   return (
@@ -17,7 +17,7 @@ function PasswordReset() {
         <Col md="3"></Col>
       </Row>
     </Container>
-  )
+  );
 }
 
-export default PasswordReset
+export default PasswordReset;
