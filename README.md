@@ -1,5 +1,3 @@
-# [RotaApp](https://rota-app-65e11.web.app/)
-
 ## About
 
 This is my demo application for prospective employers.
@@ -28,3 +26,14 @@ This app uses:
 | Create new rota                  | Update/delete rota               |
 | -------------------------------- | -------------------------------- |
 | ![](README-gifs/create-rota.gif) | ![](README-gifs/update-rota.gif) |
+
+## Demo
+
+You can find the demo hosted [here](https://rota-app-65e11.web.app)
+
+There are two accounts you can sign-in with to use the demo.
+
+| Email             | Password |
+| ----------------- | -------- |
+| admin@rotaapp.com | password |
+| johndoe@gmail.com | password |

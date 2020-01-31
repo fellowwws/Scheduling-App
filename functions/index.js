@@ -115,23 +115,25 @@ exports.sendPasswordChangedEmail = functions
   });
 
 // exports.createInitialUser = functions.https.onRequest((req, res) => {
-//   auth.createUser({
-//     email: req.query.email,
-//     password: 'password',
-//     displayName: req.query.displayName,
-//   })
-//   .then(userRecord => {
-//     console.log('Successfully created new user:', userRecord.uid);
-//     res.status(200).send();
-//   })
-//   .catch(error => {
-//     console.log('Error creating new user:', error);
-//     res.status(500).send();
-//   });
+//   auth
+//     .createUser({
+//       email: req.query.email,
+//       password: "password",
+//       displayName: req.query.displayName
+//     })
+//     .then(userRecord => {
+//       console.log("Successfully created new user:", userRecord.uid);
+//       res.status(200).send();
+//     })
+//     .catch(error => {
+//       console.log("Error creating new user:", error);
+//       res.status(500).send();
+//     });
 // });
 
 // exports.grantAdminPrivilege = functions.https.onRequest((req, res) => {
-//   auth.getUserByEmail(req.query.email)
+//   auth
+//     .getUserByEmail(req.query.email)
 //     .then(user => {
 //       auth.setCustomUserClaims(user.uid, {
 //         admin: true
