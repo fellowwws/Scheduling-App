@@ -29,7 +29,7 @@ This app uses:
 
 ## Demo
 
-You can find the demo hosted [here](https://rota-app-65e11.web.app).There are two accounts you can sign-in with.
+You can find the demo hosted [here](https://rota-app-65e11.web.app). There are two accounts you can sign-in with.
 
 | Email             | Password |
 | ----------------- | -------- |
