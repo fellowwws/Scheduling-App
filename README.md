@@ -2,6 +2,8 @@
 
 This is my demo application for prospective employers.
 
+Its purpose is to create schedules and manage employees. It provides a central place to coordinate who does what and when. When a new rota is published or an existing rota is updated, users receive and email informing them so.
+
 This app is built with:
 
 - [React v16.x](https://github.com/facebook/react)
@@ -31,7 +33,7 @@ This app uses:
 
 You can find the demo hosted [here](https://rota-app-65e11.web.app). There are two accounts you can sign-in with.
 
-| Email             | Password |
-| ----------------- | -------- |
-| admin@rotaapp.com | password |
-| johndoe@gmail.com | password |
+| Email                          | Password | Type  |
+| ------------------------------ | -------- | ----- |
+| paul99fellows[at]rotaapp[.]com | password | Admin |
+| johndoe[at]gmail[.]com         | password | User  |
