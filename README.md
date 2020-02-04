@@ -6,7 +6,7 @@ Its purpose is to create schedules and manage employees. It provides a central p
 
 This app is built with:
 
-- [React v16.x](https://github.com/facebook/react)
+- [Create React App](https://github.com/facebook/create-react-app)
 - [React Router](https://github.com/ReactTraining/react-router)
 - [Reactstrap](https://reactstrap.github.io) - A Bootstrap 4 components library for React
 - [Firebase](https://firebase.google.com)
