@@ -35,5 +35,5 @@ You can find the demo hosted [here](https://rota-app-65e11.web.app). There are t
 
 | Email                          | Password | Type  |
 | ------------------------------ | -------- | ----- |
-| paul99fellows[at]gmail[.]com | password | Admin |
-| johndoe[at]gmail[.]com         | password | User  |
+| paul99fellows[at]gmail[dot]com | password | Admin |
+| johndoe[at]gmail[dot]com       | password | User  |
