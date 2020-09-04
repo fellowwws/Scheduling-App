@@ -2,7 +2,7 @@
 
 This is my demo application for prospective employers.
 
-Its purpose is to create schedules and manage employees. It provides a central place to coordinate who does what and when. If a new rota is published or an existing rota is updated, users receive and email informing them so.
+Its purpose is to create schedules and manage employees. It provides a central place to coordinate who does what and when. If a new rota is published or an existing rota is updated, users will receive a notification by email.
 
 This app is built with:
 
