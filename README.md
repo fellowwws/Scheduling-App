@@ -33,7 +33,7 @@ This app uses:
 
 You can find the demo hosted [here](https://rota-app-65e11.firebaseapp.com).There are two accounts you can sign-in with.
 
-| Email                    | Password | Type  |
-| ------------------------ | -------- | ----- |
-| janedoe[at]gmail[dot]com | password | Admin |
-| johndoe[at]gmail[dot]com | password | User  |
+| Email             | Password | Type  |
+| ----------------- | -------- | ----- |
+| janedoe@gmail.com | password | Admin |
+| johndoe@gmail.com | password | User  |
