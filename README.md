@@ -1,12 +1,10 @@
 ## About
 
-This is my demo application for prospective employers.
-
-Its purpose is to create schedules and manage employees. It provides a central place to coordinate who does what and when. When a new rota is published or an existing rota is updated, users receive and email informing them so.
+This is my demo React + Firebase application for prospective employers.
 
 This app is built with:
 
-- [React v16.x](https://github.com/facebook/react)
+- [React](https://github.com/facebook/react)
 - [React Router](https://github.com/ReactTraining/react-router)
 - [Reactstrap](https://reactstrap.github.io) - A Bootstrap 4 components library for React
 - [Firebase](https://firebase.google.com)
